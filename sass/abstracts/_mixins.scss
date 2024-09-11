@@ -12,3 +12,46 @@
 	left: 50%;
 	transform: translate(-50%, -50%);
 }
+
+// MEDIA QUERY MANAGER
+/*
+0PX - 600PX         IS PHONE
+600PX - 900PX       IS TABLET PORTRAIT
+900PX - 1200PX      IS TABLET LANDSCAPE
+1200PX - 1800PX     IS NORMAL DESKTOP
+1800PX & ABOVE      IS LARGE DESKTOP
+
+16px = 1em
+600px = 37.5em
+900px = 56.25em
+1200px = 75em
+1800px = 112.5em
+*/
+
+// BREAKPOINT ARGUMENT CHOICES: [ phone, tab-port, tab-land, lg-desk ]
+
+@mixin respond($breakpoint) {
+	@if $breakpoint == phone {
+		@media (max-width: 600px) {
+			@content;
+		}
+	}
+
+	@if $breakpoint == tab-port {
+		@media (max-width: 56.25em) {
+			@content;
+		}
+	}
+
+	@if $breakpoint == tab-land {
+		@media (max-width: 75em) {
+			@content;
+		}
+	}
+
+	@if $breakpoint == lg-desk {
+		@media (min-width: 112.5em) {
+			@content;
+		}
+	}
+}
